@@ -1,7 +1,7 @@
 CC	=	g++
 CFLAGS	=	-W	-Wall	-ansi	-std=c++11	-g
 LIBS	=
-LDFLAGS	=
+LDFLAGS	= `sdl2-config --cflags --libs`
 INCLUDES	=
 EXEC	=	main
 SRC	=	main.cpp
@@ -14,5 +14,5 @@ main:	$(OBJ)
 	$(CC)	$(CFLAGS)	-o	$@	-c	$<
 clean:
 	rm	-rf	*.o	*~
-mrproper:	clean
+rmall:	clean
 	rm	-rf	$(EXEC)
