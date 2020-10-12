@@ -36,7 +36,7 @@ int main()
     }
 
     //Chargement d'une surface
-    surfaceTest = SDL_LoadBMP("ressources/images/maps/map_ampli.bmp");
+    surfaceTest = SDL_LoadBMP("ressources/images/maps/map_chat.bmp");
     if(!surfaceTest){
         std::cout << "Erreur chargement de la surface" <<std::endl;
         SDL_Quit();
