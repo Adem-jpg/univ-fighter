@@ -1,7 +1,7 @@
 #include "graphic.hpp"
 
-int init_sdl(SDL_Window* window, SDL_Renderer* renderer){
-
+int init_sdl(SDL_Window** window, SDL_Renderer** renderer){
+    /*
     // Initialisation de SDL
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
         std::cout << "Erreur d’initialisation SDL:";
@@ -22,12 +22,16 @@ int init_sdl(SDL_Window* window, SDL_Renderer* renderer){
     //Creation du renderer
     renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
     if(!renderer){
-        std::cout << "Erreur creation du Renderer";
+        std::cout << "Erreur creation du Renderer" << std::endl;
         std::cout << SDL_GetError() << std::endl;
         SDL_Quit();
         return 1;
     }
     return 0;
+    */
+
+    return SDL_CreateWindowAndRenderer(1600,900,0,window,renderer);
+    
 }
 
 void quit_sdl(SDL_Window* window, SDL_Renderer* renderer){
