@@ -4,7 +4,7 @@ int init_sdl(SDL_Window** window, SDL_Renderer** renderer){
     
     // Initialisation de SDL
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
-        std::cout << "Erreur d’initialisation SDL:";
+        std::cout << "Erreur d’initialisation SDL: ";
         std::cout << SDL_GetError() << std::endl;
         SDL_Quit();
         return 1;
@@ -12,8 +12,8 @@ int init_sdl(SDL_Window** window, SDL_Renderer** renderer){
 
     // Creation de la fenêtre
     *window = SDL_CreateWindow("Fenetre SDL", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1600, 900, SDL_WINDOW_RESIZABLE);
-    if(window == NULL){
-        std::cout << "Erreur de la creation d’une fenetre:";
+    if(!window){
+        std::cout << "Erreur de la creation d’une fenetre: ";
         std::cout << SDL_GetError() << std::endl;
         SDL_Quit();
         return 1;
@@ -22,7 +22,7 @@ int init_sdl(SDL_Window** window, SDL_Renderer** renderer){
     // Creation du renderer
     *renderer = SDL_CreateRenderer(*window,-1,SDL_RENDERER_ACCELERATED);
     if(!renderer){
-        std::cout << "Erreur creation du Renderer" << std::endl;
+        std::cout << "Erreur creation du Renderer: ";
         std::cout << SDL_GetError() << std::endl;
         SDL_Quit();
         return 1;
@@ -43,20 +43,20 @@ void init_textures(textures_t* t,SDL_Renderer* r){
     t->map = NULL;
     t->player1neutral = NULL;
 
-    //map load
+    //map texture load
     SDL_Surface* sTemp = NULL;
     sTemp = SDL_LoadBMP("ressources/images/maps/map_chat.bmp");
     if(!sTemp){
-        std::cout << "Erreur chargement de la surface de la map" <<std::endl;
+        std::cout << "Erreur chargement de la surface de la map: ";
         std::cout << SDL_GetError() << std::endl;
     }
     t->map = SDL_CreateTextureFromSurface(r,sTemp);
     SDL_FreeSurface(sTemp);
 
-    //player load
+    //player texture load
     sTemp = SDL_LoadBMP("ressources/images/player/player1neutral.bmp");
     if(!sTemp){
-        std::cout << "Erreur chargement de la surface du joueur" <<std::endl;
+        std::cout << "Erreur chargement de la surface du joueur: ";
         std::cout << SDL_GetError() << std::endl;
     }
     t->player1neutral = SDL_CreateTextureFromSurface(r,sTemp);

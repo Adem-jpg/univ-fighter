@@ -1,6 +1,5 @@
 #include "graphic.hpp"
 
-
 int main(){
     bool terminer = false;
     SDL_Window* window = NULL; // Déclaration de la fenêtre
@@ -9,15 +8,12 @@ int main(){
     SDL_Renderer* renderer = NULL;
 
     if(init_sdl(&window,&renderer)){
-        std::cout << "quitting sdl" << std::endl;
+        std::cout << "Quitting sdl: ";
         std::cout << SDL_GetError() << std::endl;
         return EXIT_FAILURE;
     }
 
     init_textures(textures,renderer);
-
-    //affichage a l'ecran
-
 
     // Boucle principale
     while(!terminer){
@@ -35,6 +31,7 @@ int main(){
                 }
             }
         }
+        // Affichage a l'ecran
         update_graphics(renderer,textures);
     }
     clean_textures(textures);
