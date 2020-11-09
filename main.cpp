@@ -17,9 +17,7 @@ int main(){
     init_textures(textures,renderer);
 
     //affichage a l'ecran
-    SDL_RenderClear(renderer);    
-    SDL_RenderCopy(renderer,textures->map,NULL,NULL);
-    SDL_RenderPresent(renderer);
+
 
     // Boucle principale
     while(!terminer){
@@ -37,6 +35,7 @@ int main(){
                 }
             }
         }
+        update_graphics(renderer,textures);
     }
     clean_textures(textures);
     // Quitter SDL
