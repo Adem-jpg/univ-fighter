@@ -5,8 +5,7 @@ int main(){
     bool terminer = false;
     SDL_Window* window = NULL; // Déclaration de la fenêtre
     SDL_Event events; // Événements liés à la fenêtre
-    textures_t* textures;
-
+    textures_t* textures = (textures_t*)malloc(sizeof(textures_t*));
     SDL_Renderer* renderer = NULL;
 
     if(init_sdl(&window,&renderer)){
