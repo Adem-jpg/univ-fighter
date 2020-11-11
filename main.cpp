@@ -4,18 +4,16 @@
 int main(){
     game_t* game = (game_t*)malloc(sizeof(game_t*));
     init_game(game);
-    SDL_Window* window = NULL; // Déclaration de la fenêtre
-    SDL_Event events; // Événements liés à la fenêtre
     textures_t* textures = (textures_t*)malloc(sizeof(textures_t*));
-    SDL_Renderer* renderer = NULL;
+    SDL_Event events;
 
-    if(init_sdl(&window,&renderer)){
+    if(init_sdl(&game->window,&game->renderer)){
         std::cout << "Quitting sdl: ";
         std::cout << SDL_GetError() << std::endl;
         return EXIT_FAILURE;
     }
 
-    init_textures(textures,renderer);
+    init_textures(textures,game->renderer);
 
     // Boucle principale
     while(game->ingame){
@@ -33,10 +31,10 @@ int main(){
             }
         }
         // Affichage a l'ecran
-        update_graphics(renderer,textures);
+        update_graphics(game->renderer,textures);
     }
     clean_textures(textures);
     // Quitter SDL
-    quit_sdl(window,renderer);
+    quit_sdl(game->window,game->renderer);
     return 0;
 }
