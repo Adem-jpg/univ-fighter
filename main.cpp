@@ -1,7 +1,9 @@
 #include "graphic.hpp"
+#include "logic.hpp"
 
 int main(){
-    bool terminer = false;
+    game_t* game = (game_t*)malloc(sizeof(game_t*));
+    init_game(game);
     SDL_Window* window = NULL; // Déclaration de la fenêtre
     SDL_Event events; // Événements liés à la fenêtre
     textures_t* textures = (textures_t*)malloc(sizeof(textures_t*));
@@ -16,17 +18,16 @@ int main(){
     init_textures(textures,renderer);
 
     // Boucle principale
-    while(!terminer){
+    while(game->ingame){
         while(SDL_PollEvent(&events)){
             switch(events.type){
                 case SDL_QUIT:
-                    terminer = true;
+                    game->ingame = false;
                     break;
                 case SDL_KEYDOWN: // a modifier
                 switch(events.key.keysym.sym){
                     case SDLK_ESCAPE:
-                    case SDLK_q:
-                        terminer = true;
+                        game->ingame = false;
                         break;
                 }
             }

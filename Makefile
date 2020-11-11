@@ -2,9 +2,9 @@ CC	=	g++
 CFLAGS	=	-W	-Wall	-ansi	-std=c++11	-g
 LIBS	=
 LDFLAGS	= `sdl2-config --cflags --libs`
-INCLUDES	= graphic.hpp commun.hpp
+INCLUDES	= graphic.hpp commun.hpp logic.hpp
 EXEC	=	main
-SRC	=	main.cpp graphic.cpp
+SRC	=	main.cpp graphic.cpp logic.cpp
 OBJ	=	$(SRC:.c=.o)
 
 all:	$(EXEC)
