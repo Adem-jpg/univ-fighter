@@ -1,6 +1,35 @@
 #include "graphic.hpp"
 #include "logic.hpp"
 
+void handle_events(SDL_Event* events,game_t* game, textures_t* textures){
+        while(SDL_PollEvent(events)){
+            if(events->type == SDL_QUIT){
+                game->ingame = false;
+            }
+            if(events->type == SDL_KEYDOWN){
+                switch(events->key.keysym.sym){
+                    case SDLK_ESCAPE:
+                        game->ingame = false;
+                        break;
+                    case SDLK_a:
+                        textures->player1 = textures->player1highkick;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if(events->type == SDL_KEYUP){
+                switch(events->key.keysym.sym){
+                    case SDLK_a:
+                        textures->player1 = textures->player1neutral;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+}
+
 int main(){
     game_t* game = (game_t*)malloc(sizeof(game_t*));
     init_game(game);
@@ -17,19 +46,8 @@ int main(){
 
     // Boucle principale
     while(game->ingame){
-        while(SDL_PollEvent(&events)){
-            switch(events.type){
-                case SDL_QUIT:
-                    game->ingame = false;
-                    break;
-                case SDL_KEYDOWN: // a modifier
-                switch(events.key.keysym.sym){
-                    case SDLK_ESCAPE:
-                        game->ingame = false;
-                        break;
-                }
-            }
-        }
+        handle_events(&events,game,textures);
+ 
         // Affichage a l'ecran
         update_graphics(game->renderer,textures);
     }

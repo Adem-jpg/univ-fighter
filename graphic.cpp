@@ -53,7 +53,7 @@ void init_textures(textures_t* t,SDL_Renderer* r){
     t->map = SDL_CreateTextureFromSurface(r,sTemp);
     SDL_FreeSurface(sTemp);
 
-    //player texture load
+    //player 1 texture load
     sTemp = SDL_LoadBMP("ressources/images/player/player1neutral.bmp");
     if(!sTemp){
         std::cout << "Erreur chargement de la surface du joueur: ";
@@ -62,6 +62,16 @@ void init_textures(textures_t* t,SDL_Renderer* r){
     t->player1neutral = SDL_CreateTextureFromSurface(r,sTemp);
     SDL_FreeSurface(sTemp);
 
+    //player 1 high kick texture load
+    sTemp = SDL_LoadBMP("ressources/images/player/player1highkick.bmp");
+    if(!sTemp){
+        std::cout << "Erreur chargement de la surface du high kick du joueur 1: ";
+        std::cout << SDL_GetError() << std::endl;
+    }
+    t->player1highkick = SDL_CreateTextureFromSurface(r,sTemp);
+    SDL_FreeSurface(sTemp);
+
+    t->player1 = t->player1neutral;
 }
 
 void clean_textures(textures_t* t){
@@ -73,6 +83,6 @@ void update_graphics(SDL_Renderer* r,textures_t* t){
     SDL_RenderClear(r);    
     SDL_RenderCopy(r,t->map,NULL,NULL);
     SDL_Rect rect = {200,350,200,400};
-    SDL_RenderCopy(r,t->player1neutral, NULL, &rect);
+    SDL_RenderCopy(r,t->player1, NULL, &rect);
     SDL_RenderPresent(r);
 }
