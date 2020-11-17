@@ -7,6 +7,7 @@ struct textures_s{
     SDL_Texture* map;
     SDL_Texture* player1neutral;
     SDL_Texture* player1highkick;
+    SDL_Texture* player1kick;
     SDL_Texture* player1;
 };
 

@@ -14,6 +14,9 @@ void handle_events(SDL_Event* events,game_t* game, textures_t* textures){
                     case SDLK_a:
                         textures->player1 = textures->player1highkick;
                         break;
+                    case SDLK_k:
+                        textures->player1 = textures->player1kick;
+                        break;
                     default:
                         break;
                 }
@@ -21,6 +24,9 @@ void handle_events(SDL_Event* events,game_t* game, textures_t* textures){
             if(events->type == SDL_KEYUP){
                 switch(events->key.keysym.sym){
                     case SDLK_a:
+                        textures->player1 = textures->player1neutral;
+                        break;
+                    case SDLK_k:
                         textures->player1 = textures->player1neutral;
                         break;
                     default:
