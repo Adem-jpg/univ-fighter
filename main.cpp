@@ -1,5 +1,6 @@
 #include "graphic.hpp"
 #include "logic.hpp"
+#include "player.hpp"
 
 void handle_events(SDL_Event* events,game_t* game, textures_t* textures){
         while(SDL_PollEvent(events)){
