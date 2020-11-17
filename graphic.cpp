@@ -11,7 +11,7 @@ int init_sdl(SDL_Window** window, SDL_Renderer** renderer){
     }
 
     // Creation de la fenêtre
-    *window = SDL_CreateWindow("Fenetre SDL", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1600, 900, SDL_WINDOW_RESIZABLE);
+    *window = SDL_CreateWindow("univ-fighter", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, 1600, 900, SDL_WINDOW_RESIZABLE);
     if(!window){
         std::cout << "Erreur de la creation d’une fenetre: ";
         std::cout << SDL_GetError() << std::endl;
@@ -39,13 +39,9 @@ void quit_sdl(SDL_Window* window, SDL_Renderer* renderer){
 }
 
 void init_textures(textures_t* t,SDL_Renderer* r){
-    //struct init
-    t->map = NULL;
-    t->player1neutral = NULL;
 
     //map texture load
-    SDL_Surface* sTemp = NULL;
-    sTemp = SDL_LoadBMP("ressources/images/maps/map_chat.bmp");
+    SDL_Surface* sTemp = SDL_LoadBMP("ressources/images/maps/map_chat.bmp");
     if(!sTemp){
         std::cout << "Erreur chargement de la surface de la map: ";
         std::cout << SDL_GetError() << std::endl;
@@ -75,8 +71,10 @@ void init_textures(textures_t* t,SDL_Renderer* r){
 }
 
 void clean_textures(textures_t* t){
+    t->player1 = NULL;
     SDL_DestroyTexture(t->map);
     SDL_DestroyTexture(t->player1neutral);
+    SDL_DestroyTexture(t->player1highkick);
 }
 
 void update_graphics(SDL_Renderer* r,textures_t* t){

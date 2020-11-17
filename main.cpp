@@ -52,7 +52,8 @@ int main(){
         update_graphics(game->renderer,textures);
     }
     clean_textures(textures);
-    // Quitter SDL
     quit_sdl(game->window,game->renderer);
+    // free(textures);
+    free(game);
     return 0;
 }
