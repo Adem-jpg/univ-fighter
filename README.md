@@ -8,3 +8,11 @@ modes de jeu :
 choix entre plusieurs maps possible
 
 Work in progress
+
+Todo:
+
+- player class
+- timer / cooldown 
+- syteme pour combo
+- menu
+- ia
