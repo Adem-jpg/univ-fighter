@@ -58,6 +58,7 @@ int main(){
         // Affichage a l'ecran
         update_graphics(game->renderer,textures);
     }
+    // SDL_RenderClear(game->renderer);
     clean_textures(textures);
     quit_sdl(game->window,game->renderer);
     // free(textures);

@@ -32,9 +32,10 @@ int init_sdl(SDL_Window** window, SDL_Renderer** renderer){
 }
 
 void quit_sdl(SDL_Window* window, SDL_Renderer* renderer){
-
     SDL_DestroyRenderer(renderer);
+    printf("Destroyed: renderer\n");
     SDL_DestroyWindow(window);
+    printf("Destroyed: window\n");
     SDL_Quit();
 }
 
@@ -81,11 +82,14 @@ void init_textures(textures_t* t,SDL_Renderer* r){
 }
 
 void clean_textures(textures_t* t){
-    t->player1 = NULL;
     SDL_DestroyTexture(t->map);
+    printf("Destroyed: map\n");
     SDL_DestroyTexture(t->player1neutral);
+    printf("Destroyed: player1neutral\n");
     SDL_DestroyTexture(t->player1highkick);
+    printf("Destroyed: player1highkick\n");
     SDL_DestroyTexture(t->player1kick);
+    printf("Destroyed: player1kick\n");
 }
 
 void update_graphics(SDL_Renderer* r,textures_t* t){
