@@ -1,25 +1,23 @@
 #include "player.hpp"
 
-class Player
-{
-    private:
-        int x,y;
-        double health;        
-    public:
-    Player(int player){
-        if(player == 1){
-            x = 200;
-            y = 350;
-        } else {
-            x = 1200;
-            y = 350;
-        }
+Player::Player(int player){
+    if(player == 1){
+        p_x = 200;
+        p_y = 350;
+    } else {
+        p_x = 1200;
+        p_y = 350;
     }
-    ~Player();
-};
+}
 
-Player::
+void Player::moveLeft(){
+    setX(getX() - 10);
+}
 
-Player::~Player(){
-    
+void Player::moveRight(){
+    setX(getX() + 10);
+}
+
+void Player::setX(int x){
+    p_x = x;
 }

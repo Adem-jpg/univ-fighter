@@ -2,7 +2,7 @@
 #include "logic.hpp"
 #include "player.hpp"
 
-void handle_events(SDL_Event* events,game_t* game, textures_t* textures){
+void handle_events(SDL_Event* events,game_t* game, textures_t* textures,Player *p1){
         while(SDL_PollEvent(events)){
             if(events->type == SDL_QUIT){
                 game->ingame = false;
@@ -17,6 +17,12 @@ void handle_events(SDL_Event* events,game_t* game, textures_t* textures){
                         break;
                     case SDLK_k:
                         textures->player1 = textures->player1kick;
+                        break;
+                    case SDLK_q:
+                        p1->moveLeft();
+                        break;
+                    case SDLK_e:
+                        p1->moveRight();
                         break;
                     default:
                         break;
@@ -43,6 +49,8 @@ int main(){
     textures_t* textures = (textures_t*)malloc(sizeof(textures_t*));
     SDL_Event events;
 
+    Player p1 = Player(1);
+
     if(init_sdl(&game->window,&game->renderer)){
         std::cout << "Quitting sdl: ";
         std::cout << SDL_GetError() << std::endl;
@@ -53,12 +61,12 @@ int main(){
 
     // Boucle principale
     while(game->ingame){
-        handle_events(&events,game,textures);
+        // printf("player pos x: %i, y: %i\n",p1.getX(),p1.getY());
+        handle_events(&events,game,textures,&p1);
  
         // Affichage a l'ecran
-        update_graphics(game->renderer,textures);
+        update_graphics(game->renderer,textures,p1);
     }
-    // SDL_RenderClear(game->renderer);
     clean_textures(textures);
     quit_sdl(game->window,game->renderer);
     // free(textures);

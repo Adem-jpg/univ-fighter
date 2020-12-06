@@ -92,10 +92,10 @@ void clean_textures(textures_t* t){
     printf("Destroyed: player1kick\n");
 }
 
-void update_graphics(SDL_Renderer* r,textures_t* t){
+void update_graphics(SDL_Renderer* r,textures_t* t,Player p1){
     SDL_RenderClear(r);    
     SDL_RenderCopy(r,t->map,NULL,NULL);
-    SDL_Rect rect = {200,350,200,400};
+    SDL_Rect rect = {p1.getX(),p1.getY(),200,400};
     SDL_RenderCopy(r,t->player1, NULL, &rect);
     SDL_RenderPresent(r);
 }
