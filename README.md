@@ -26,9 +26,8 @@ WORK IN PROGRESS ...
 
 To do list:
 
-- player class
 - timer / cooldown 
-- syteme pour combo
+- systeme pour combo
 - menu
 - ia
 - sélection de la map

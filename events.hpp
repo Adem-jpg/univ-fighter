@@ -6,6 +6,6 @@
 #include "logic.hpp"
 #include "graphic.hpp"
 
-void handle_events(SDL_Event* events,game_t* game, textures_t* textures,Player *p1);
+void handle_events(SDL_Event* events,game_t* game, textures_t* textures,Player* p1, Player* p2);
 
 #endif

@@ -11,6 +11,7 @@ int main(){
     SDL_Event events;
 
     Player p1 = Player(1);
+    Player p2 = Player(2);
 
     if(init_sdl(&game->window,&game->renderer)){
         std::cout << "Quitting sdl: ";
@@ -22,13 +23,12 @@ int main(){
 
     // Boucle principale
     while(game->ingame){
-        // printf("player pos x: %i, y: %i\n",p1.getX(),p1.getY());
-        handle_events(&events,game,textures,&p1);
+        handle_events(&events,game,textures,&p1,&p2);
 
 
  
         // Affichage a l'ecran
-        update_graphics(game->renderer,textures,p1);
+        update_graphics(game->renderer,textures,p1,p2);
     }
     clean_textures(textures);
     quit_sdl(game->window,game->renderer);
