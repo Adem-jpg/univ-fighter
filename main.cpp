@@ -3,6 +3,16 @@
 #include "player.hpp"
 #include "events.hpp"
 
+void update_data(Player* p1, Player* p2){
+    if((p2->getX()-p1->getX())<200){
+        std::cout << "collision" << std::endl;
+    } else {
+        std::cout << "no collision" << std::endl;
+    }
+    //collision
+    //if collision == 1 {handle attacks}
+}
+
 
 int main(){
     game_t* game = (game_t*)malloc(sizeof(game_t*));
@@ -25,7 +35,7 @@ int main(){
     while(game->ingame){
         handle_events(&events,game,textures,&p1,&p2);
 
-
+        update_data(&p1,&p2);
  
         // Affichage a l'ecran
         update_graphics(game->renderer,textures,p1,p2);

@@ -5,7 +5,7 @@ LDFLAGS	= `sdl2-config --cflags --libs`
 INCLUDES	= graphic.hpp commun.hpp logic.hpp player.hpp events.hpp
 EXEC	=	main
 SRC	=	main.cpp graphic.cpp logic.cpp player.cpp events.cpp
-OBJ	=	$(SRC:.c=.o)
+OBJ	=	$(SRC:.cpp=.o)
 
 all:	$(EXEC)
 main:	$(OBJ)
