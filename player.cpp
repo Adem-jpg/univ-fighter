@@ -8,6 +8,7 @@ Player::Player(int player){
         p_x = 1200;
         p_y = 350;
     }
+    p_attack = NOATTACKS;
 }
 
 void Player::moveLeft(){
@@ -20,4 +21,15 @@ void Player::moveRight(){
 
 void Player::setX(int x){
     p_x = x;
+}
+
+void Player::reduceHP(double x){
+    p_x -= x;
+    if(p_x<0){p_x=0;}
+}
+
+void Player::setAttack(int attack){
+    if(p_attack==NOATTACKS){
+        p_attack = attack;
+    }
 }

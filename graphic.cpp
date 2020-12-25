@@ -79,6 +79,7 @@ void init_textures(textures_t* t,SDL_Renderer* r){
     SDL_FreeSurface(sTemp);
 
     t->player1 = t->player1neutral;
+    t->player2 = t->player1neutral;
 }
 
 void clean_textures(textures_t* t){
@@ -92,12 +93,21 @@ void clean_textures(textures_t* t){
     printf("Destroyed: player1kick\n");
 }
 
-void update_graphics(SDL_Renderer* r,textures_t* t,Player p1,Player p2){
+void update_graphics(SDL_Renderer* r,textures_t* t,Player* p1,Player* p2){
+    if(p1->getAttack()==NOATTACKS){
+        t->player1=t->player1neutral;
+    }
+    if(p1->getAttack()==KICK){
+        t->player1=t->player1kick;
+    }
+    if(p1->getAttack()==HIGHKICK){
+        t->player1=t->player1highkick;
+    }
     SDL_RenderClear(r);    
     SDL_RenderCopy(r,t->map,NULL,NULL);
-    SDL_Rect rectp1 = {p1.getX(),p1.getY(),200,400};
-    SDL_Rect rectp2 = {p2.getX(),p2.getY(),200,400};
+    SDL_Rect rectp1 = {p1->getX(),p1->getY(),200,400};
+    SDL_Rect rectp2 = {p2->getX(),p2->getY(),200,400};
     SDL_RenderCopy(r,t->player1, NULL, &rectp1);
-    SDL_RenderCopy(r,t->player1, NULL, &rectp2);
+    SDL_RenderCopy(r,t->player2, NULL, &rectp2);
     SDL_RenderPresent(r);
 }

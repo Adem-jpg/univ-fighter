@@ -11,10 +11,12 @@ void handle_events(SDL_Event* events,game_t* game, textures_t* textures,Player* 
                     game->ingame = false;
                     break;
                 case SDLK_a:
-                    textures->player1 = textures->player1highkick;
+                    p1->setAttack(HIGHKICK);
+                    // textures->player1 = textures->player1highkick;
                     break;
                 case SDLK_d:
-                    textures->player1 = textures->player1kick;
+                    p1->setAttack(KICK);
+                    // textures->player1 = textures->player1kick;
                     break;
                 case SDLK_q:
                     p1->moveLeft();
@@ -28,16 +30,16 @@ void handle_events(SDL_Event* events,game_t* game, textures_t* textures,Player* 
                 case SDLK_LEFTBRACKET:
                     p2->moveRight();
                 default:
+                    p1->setAttack(NOATTACKS);
                     break;
             }
         }
         if(events->type == SDL_KEYUP){
             switch(events->key.keysym.sym){
                 case SDLK_a:
-                    textures->player1 = textures->player1neutral;
-                    break;
                 case SDLK_d:
-                    textures->player1 = textures->player1neutral;
+                    p1->resetAttack();
+                    // textures->player1 = textures->player1neutral;
                     break;
                 default:
                     break;
